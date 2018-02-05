@@ -10,10 +10,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
-/**
- * Created by Atharv on 2/4/2018.
- */
-
+/** Class for the array adapter - taken from developer.android.com**/
 public class ListViewAdapter extends ArrayAdapter <Subscription>{
 
 
@@ -40,11 +37,7 @@ public class ListViewAdapter extends ArrayAdapter <Subscription>{
         comments.setText(sub.getComment());
         date.setText(sub.getStartDate());
 
-        //TextView tvHome = (TextView) convertView.findViewById(R.id.tvHome);
-        // Populate the data into the template view using the data object
-        //tvName.setText(user.name);
-        //tvHome.setText(user.hometown);
-        // Return the completed view to render on screen
+
         return view;
 
     }

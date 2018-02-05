@@ -10,9 +10,7 @@ import android.widget.EditText;
 
 import java.util.Calendar;
 
-/**
- * Created by Atharv on 2/4/2018.
- */
+/** Class activity for editing subscriptions **/
 
 public class EditClass extends AddSubActivity{
 
@@ -20,26 +18,29 @@ public class EditClass extends AddSubActivity{
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
 
+        // Getting sub data fromm main activity
+
         String name = getIntent().getStringExtra("Name");
         String comment = getIntent().getStringExtra("Comment");
         String charge = getIntent().getStringExtra("Charge");
         date = getIntent().getStringExtra("Date");
 
         EditText inputName = (EditText) findViewById(R.id.editName);
-        //name = inputName.getText().toString();
         EditText inputComment = (EditText) findViewById(R.id.editComments);
-        // = inputComment.getText().toString();
         EditText inputCharge = (EditText) findViewById(R.id.editText3);
-        //inputCharge.setInputType(InputType.TYPE_NUMBER_FLAG_DECIMAL);
-       // charge = inputCharge.getText().toString();
+
+        // Setting data to editTexts
 
         inputCharge.setText(charge);
         inputComment.setText(comment);
         inputName.setText(name);
 
+        // Listener for calendar
         datepickBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                // Converting parsed date to default the calendar
 
                 String[] splitString = date.split("-");
                 int year = Integer.valueOf(splitString[0]);
@@ -59,14 +60,17 @@ public class EditClass extends AddSubActivity{
     }
     @Override
     public void parseToMainActivity(View view) {
+        // Similar function to Add Sub Activity to add data to forResult intent
+
         Intent changeData = new Intent(this, MainActivity.class);
         EditText inputName = (EditText) findViewById(R.id.editName);
         name = inputName.getText().toString();
         EditText inputComment = (EditText) findViewById(R.id.editComments);
         comment = inputComment.getText().toString();
         EditText inputCharge = (EditText) findViewById(R.id.editText3);
-        //inputCharge.setInputType(InputType.TYPE_NUMBER_FLAG_DECIMAL);
         charge = inputCharge.getText().toString();
+
+        // Index send for the edited subList object
         int index = getIntent().getIntExtra("Index", -1);
 
         changeData.putExtra("NAME", name);

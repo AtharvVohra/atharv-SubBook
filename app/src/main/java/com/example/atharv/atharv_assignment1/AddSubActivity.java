@@ -13,7 +13,11 @@ import android.widget.Toast;
 
 import java.util.Calendar;
 
+/** Class for adding subscriptions by parsing user input back to main **/
+
 public class AddSubActivity extends AppCompatActivity {
+
+    // Used variables
 
     public String name;
     public String date;
@@ -25,6 +29,8 @@ public class AddSubActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // onCreate method that inits the calendar dialog
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_sub);
 
@@ -51,18 +57,27 @@ public class AddSubActivity extends AppCompatActivity {
     }
 
     public void parseToMainActivity(View view){
+        // Activity that parses data back to the main activity
+
         Intent changeData = new Intent(this, MainActivity.class);
         EditText inputName = (EditText) findViewById(R.id.editName);
         name = inputName.getText().toString();
+
+        // Check for name input
+
         if(name == null || name.isEmpty()){
             Toast.makeText(AddSubActivity.this, "Did you really sign up for no subscription?", Toast.LENGTH_SHORT).show();
             return;
         }
+
+        // Getting user input
         EditText inputComment = (EditText) findViewById(R.id.editComments);
         comment = inputComment.getText().toString();
         EditText inputCharge = (EditText) findViewById(R.id.editText3);
-        //inputCharge.setInputType(InputType.TYPE_NUMBER_FLAG_DECIMAL);
         charge = inputCharge.getText().toString();
+
+        // Check for correct date and charge input
+
         if(charge == null || charge.isEmpty()){
             Toast.makeText(AddSubActivity.this, "If it's empty, enter 0", Toast.LENGTH_SHORT).show();
             return;
@@ -71,6 +86,8 @@ public class AddSubActivity extends AppCompatActivity {
             Toast.makeText(AddSubActivity.this, "I mean, time travel is impossible", Toast.LENGTH_SHORT).show();
             return;
         }
+
+        // Parsing without bundles using forResult intent
 
         changeData.putExtra("NAME", name);
         changeData.putExtra("CHARGE", charge);
