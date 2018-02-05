@@ -1,0 +1,4 @@
+#Sun Feb 04 19:53:28 MST 2018
+base.0=C\:\\Users\\Atharv\\Desktop\\UofA\\Winter Term 2018\\Cmput 301\\atharvAssignment1\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\4
+path.0=classes.dex
+renamed.0=classes.dex
